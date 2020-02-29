@@ -24,6 +24,7 @@
 
 .add-user {
     width: 135px;
+    cursor: pointer;
 
     background-color: green;
     border: none;

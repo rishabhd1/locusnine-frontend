@@ -1,0 +1,9 @@
+.example-container {
+    margin: 20px 0px;
+
+    overflow: auto;
+}
+
+table {
+    width: 100%;
+}
