@@ -1,0 +1,23 @@
+.main {
+    padding: 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.add-user {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.add-user span {
+    text-transform: uppercase;
+}
