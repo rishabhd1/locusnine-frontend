@@ -8,17 +8,10 @@ import { AddUserComponent } from './add-user/add-user.component';
 import { MaterialModule } from './material/material.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    UserComponent,
-    AddUserComponent
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    MaterialModule
-  ],
+  declarations: [AppComponent, UserComponent, AddUserComponent],
+  imports: [BrowserModule, BrowserAnimationsModule, MaterialModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [AddUserComponent]
 })
-export class AppModule { }
+export class AppModule {}

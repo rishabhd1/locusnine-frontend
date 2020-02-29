@@ -7,12 +7,25 @@ import { User } from '../models/User';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-  displayedColumns = ['name', 'email', 'roleType', 'mobile', 'status', 'options'];
+  displayedColumns = [
+    'name',
+    'email',
+    'roleType',
+    'mobile',
+    'status',
+    'options'
+  ];
   dataSource = ELEMENT_DATA;
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  getName(name: string) {
+    let changedName: string = name.charAt(0).toUpperCase() + name.slice(1);
+    changedName = changedName.split(/(?=[A-Z])/).join(' ');
+    return changedName.toUpperCase();
+  }
 
   updateUser(id: string) {
     console.log(`ID: ${JSON.stringify(id)}`);
@@ -24,6 +37,20 @@ export class UserComponent implements OnInit {
 }
 
 const ELEMENT_DATA: User[] = [
-  { _id: '123', name: 'Rishabh', email: 'rishabh@gmail.com', roleType: 'Admin', mobile: 9923251513, status: true },
-  { _id: '345', name: 'John Doe', email: 'john@doe.com', roleType: 'Custmoer Executive', mobile: 9923251511, status: false },
+  {
+    _id: '123',
+    name: 'Rishabh',
+    email: 'rishabh@gmail.com',
+    roleType: 'Admin',
+    mobile: 9923251513,
+    status: true
+  },
+  {
+    _id: '345',
+    name: 'John Doe',
+    email: 'john@doe.com',
+    roleType: 'Custmoer Executive',
+    mobile: 9923251511,
+    status: false
+  }
 ];

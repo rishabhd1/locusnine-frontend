@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
-import { UserComponent } from './user/user.component';
+import { MatDialog } from '@angular/material/dialog';
+
+import { AddUserComponent } from './add-user/add-user.component';
 
 @Component({
   selector: 'app-root',
@@ -8,4 +10,16 @@ import { UserComponent } from './user/user.component';
 })
 export class AppComponent {
   title = 'locusnine-frontend';
+
+  constructor(public dialog: MatDialog) {}
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(AddUserComponent, {
+      width: '450px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+  }
 }
