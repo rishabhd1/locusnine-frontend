@@ -5,12 +5,15 @@
       <td mat-cell *matCellDef="let element">
         <ng-container [ngSwitch]="col">
           <div *ngSwitchCase="'status'">
-            <img
-              *ngIf="element[col] === true; else inactive"
-              src="../../assets/ico_active.svg"
-            />
+            <div class="status-div" *ngIf="element[col] === true; else inactive">
+              <img src="../../assets/ico_active.svg" />
+              <span>Active</span>
+            </div>
             <ng-template #inactive>
-              <img src="../../assets/ico_inactive.svg" />
+              <div class="status-div">
+                <img src="../../assets/ico_inactive.svg" />
+                <span>Inactive</span>
+              </div>
             </ng-template>
           </div>
           <div class="options" *ngSwitchCase="'options'">
@@ -18,9 +21,9 @@
               src="../../assets/ico_edit.svg"
               (click)="updateUser(element._id)"
             />
-            <mat-icon (click)="deleteUser(element._id)"
-              >delete_outline</mat-icon
-            >
+            <mat-icon (click)="deleteUser(element._id)">
+              delete_outline
+            </mat-icon>
           </div>
           <div *ngSwitchDefault>
             {{ element[col] }}

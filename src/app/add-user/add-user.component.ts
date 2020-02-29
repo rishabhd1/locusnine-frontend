@@ -9,7 +9,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class AddUserComponent implements OnInit {
   name: string;
   email: string;
-  roleType: string;
+  roleType = 'Admin';
   mobile: number;
 
   constructor(public dialogRef: MatDialogRef<AddUserComponent>) {}

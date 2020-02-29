@@ -21,6 +21,8 @@
 
 .form mat-form-field {
   width: 100%;
+
+  padding: 5px 0px;
 }
 
 .form .role-type {
