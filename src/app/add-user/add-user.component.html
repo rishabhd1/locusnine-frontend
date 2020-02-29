@@ -1,5 +1,5 @@
 <div class="header">
-  <div>Add User</div>
+  <div>{{ title }}</div>
   <img src="../../assets/ico_close.svg" (click)="closeDialog()">
 </div>
 <div class="form">
@@ -21,13 +21,13 @@
   </mat-radio-group>
 
   <mat-form-field appearance="outline">
-    <mat-label>Mobile</mat-label>
+    <mat-label>Mobile (Optional)</mat-label>
     <input matInput [(ngModel)]="mobile">
     <mat-hint>Hint</mat-hint>
   </mat-form-field>
 </div>
 <div class="footer">
   <button class="add-user">
-    <span>add user</span>
+    <span>{{ title }}</span>
   </button>
 </div>

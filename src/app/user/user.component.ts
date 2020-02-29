@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../models/User';
+import { MatDialog } from '@angular/material/dialog';
+import { AddUserComponent } from '../add-user/add-user.component';
 
 @Component({
   selector: 'app-user',
@@ -17,7 +19,7 @@ export class UserComponent implements OnInit {
   ];
   dataSource = ELEMENT_DATA;
 
-  constructor() {}
+  constructor(public dialog: MatDialog) {}
 
   ngOnInit(): void {}
 
@@ -27,8 +29,20 @@ export class UserComponent implements OnInit {
     return changedName.toUpperCase();
   }
 
-  updateUser(id: string) {
-    console.log(`ID: ${JSON.stringify(id)}`);
+  updateUser(user: User) {
+    const dialogData = {
+      title: 'update',
+      user
+    };
+
+    const dialogRef = this.dialog.open(AddUserComponent, {
+      width: '450px',
+      data: dialogData
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
   }
 
   deleteUser(id: string) {
@@ -49,7 +63,7 @@ const ELEMENT_DATA: User[] = [
     _id: '345',
     name: 'John Doe',
     email: 'john@doe.com',
-    roleType: 'Custmoer Executive',
+    roleType: 'Customer Executive',
     mobile: 9923251511,
     status: false
   }
