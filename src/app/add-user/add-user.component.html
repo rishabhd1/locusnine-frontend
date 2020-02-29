@@ -1,4 +1,33 @@
 <div class="header">
   <div>Add User</div>
-  <img src="../../assets/ico_close.svg">
+  <img src="../../assets/ico_close.svg" (click)="closeDialog()">
+</div>
+<div class="form">
+  <mat-form-field appearance="outline">
+    <mat-label>Name</mat-label>
+    <input matInput [(ngModel)]="name">
+    <mat-hint>Hint</mat-hint>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Email</mat-label>
+    <input matInput [(ngModel)]="email">
+    <mat-hint>Hint</mat-hint>
+  </mat-form-field>
+
+  <mat-radio-group class="role-type" [(ngModel)]="roleType">
+    <mat-radio-button value="Admin">Admin</mat-radio-button>
+    <mat-radio-button value="Customer Executive">Customer Executive</mat-radio-button>
+  </mat-radio-group>
+
+  <mat-form-field appearance="outline">
+    <mat-label>Mobile</mat-label>
+    <input matInput [(ngModel)]="mobile">
+    <mat-hint>Hint</mat-hint>
+  </mat-form-field>
+</div>
+<div class="footer">
+  <button class="add-user">
+    <span>add user</span>
+  </button>
 </div>
