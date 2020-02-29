@@ -1,7 +1,8 @@
 export interface User {
+  _id: string;
   name: string;
-  email: number;
-  roleType: number;
+  email: string;
+  roleType: string;
   mobile: number;
   status: boolean;
 }

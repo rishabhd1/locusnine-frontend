@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../models/User';
 
 @Component({
   selector: 'app-user',
@@ -6,30 +7,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./user.component.css']
 })
 export class UserComponent implements OnInit {
-  displayedColumns = ['position', 'name', 'weight', 'symbol'];
+  displayedColumns = ['name', 'email', 'roleType', 'mobile', 'status', 'options'];
   dataSource = ELEMENT_DATA;
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  updateUser(id: string) {
+    console.log(`ID: ${JSON.stringify(id)}`);
+  }
+
+  deleteUser(id: string) {
+    console.log(`DELETE: ${JSON.stringify(id)}`);
+  }
 }
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H' },
-  { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-  { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-  { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-  { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-  { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-  { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-  { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-  { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-  { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' }
+const ELEMENT_DATA: User[] = [
+  { _id: '123', name: 'Rishabh', email: 'rishabh@gmail.com', roleType: 'Admin', mobile: 9923251513, status: true },
+  { _id: '345', name: 'John Doe', email: 'john@doe.com', roleType: 'Custmoer Executive', mobile: 9923251511, status: false },
 ];
