@@ -14,6 +14,15 @@ export class AddUserComponent implements OnInit {
   email: string;
   roleType = 'Admin';
   mobile: number;
+  formValid = true;
+  formError = {
+    name: undefined,
+    email: {
+      exists: undefined,
+      valid: undefined
+    },
+    mobile: undefined
+  };
 
   constructor(
     public dialogRef: MatDialogRef<AddUserComponent>,
@@ -39,6 +48,30 @@ export class AddUserComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  validateForm(form: PostUser) {
+    if (!form.name) {
+      this.formValid = false;
+      this.formError.name = 'error';
+    }
+
+    if (!form.email) {
+      this.formValid = false;
+      this.formError.email.exists = 'error';
+    } else {
+      const regex = /^.+?@.+?\..+$/g;
+      const validEmail = form.email.match(regex);
+      if (!validEmail) {
+        this.formValid = false;
+        this.formError.email.valid = 'error';
+      }
+    }
+
+    if (form.mobile && typeof form.mobile !== 'number') {
+      this.formValid = false;
+      this.formError.mobile = 'error';
+    }
+  }
+
   addUser() {
     const payload: PostUser = {
       name: this.name,
@@ -47,11 +80,15 @@ export class AddUserComponent implements OnInit {
       mobile: this.mobile
     };
 
-    this.userService.postUser(payload).subscribe(response => {
-      if (response.status === 'success') {
-        this.dialogRef.close();
-      }
-    });
+    this.validateForm(payload);
+
+    if (this.formValid) {
+      this.userService.postUser(payload).subscribe(response => {
+        if (response.status === 'success') {
+          this.dialogRef.close();
+        }
+      });
+    }
   }
 
   updateUser() {
@@ -62,10 +99,16 @@ export class AddUserComponent implements OnInit {
       mobile: this.mobile
     };
 
-    this.userService.updateUser(this.data.user._id, payload).subscribe(response => {
-      if (response.status === 'success') {
-        this.dialogRef.close();
-      }
-    });
+    this.validateForm(payload);
+
+    if (this.formValid) {
+      this.userService
+        .updateUser(this.data.user._id, payload)
+        .subscribe(response => {
+          if (response.status === 'success') {
+            this.dialogRef.close();
+          }
+        });
+    }
   }
 }
