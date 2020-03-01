@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
+import { UserComponent } from './user/user.component';
 import { AddUserComponent } from './add-user/add-user.component';
 
 @Component({
@@ -9,6 +10,8 @@ import { AddUserComponent } from './add-user/add-user.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  @ViewChild(UserComponent) addUserComp: UserComponent;
+
   title = 'locusnine-frontend';
 
   constructor(public dialog: MatDialog) {}
@@ -19,7 +22,7 @@ export class AppComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
+      this.addUserComp.getUser();
     });
   }
 }
