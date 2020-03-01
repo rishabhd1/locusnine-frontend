@@ -17,11 +17,36 @@ export class UserComponent implements OnInit {
     'status',
     'options'
   ];
-  dataSource = ELEMENT_DATA;
+  dataSource: User[];
 
   constructor(public dialog: MatDialog) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.getUser();
+  }
+
+  getUser() {
+    const ELEMENT_DATA: User[] = [
+      {
+        _id: '123',
+        name: 'Rishabh',
+        email: 'rishabh@gmail.com',
+        roleType: 'Admin',
+        mobile: 9923251513,
+        status: true
+      },
+      {
+        _id: '345',
+        name: 'John Doe',
+        email: 'john@doe.com',
+        roleType: 'Customer Executive',
+        mobile: 9923251511,
+        status: false
+      }
+    ];
+
+    this.dataSource = ELEMENT_DATA;
+  }
 
   getName(name: string) {
     let changedName: string = name.charAt(0).toUpperCase() + name.slice(1);
@@ -49,22 +74,3 @@ export class UserComponent implements OnInit {
     console.log(`DELETE: ${JSON.stringify(id)}`);
   }
 }
-
-const ELEMENT_DATA: User[] = [
-  {
-    _id: '123',
-    name: 'Rishabh',
-    email: 'rishabh@gmail.com',
-    roleType: 'Admin',
-    mobile: 9923251513,
-    status: true
-  },
-  {
-    _id: '345',
-    name: 'John Doe',
-    email: 'john@doe.com',
-    roleType: 'Customer Executive',
-    mobile: 9923251511,
-    status: false
-  }
-];

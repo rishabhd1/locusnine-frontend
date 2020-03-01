@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { PostUser } from '../models/PostUser';
 
 @Component({
   selector: 'app-add-user',
@@ -34,5 +35,16 @@ export class AddUserComponent implements OnInit {
 
   closeDialog(): void {
     this.dialogRef.close();
+  }
+
+  addUser() {
+    const payload: PostUser = {
+      name: this.name,
+      email: this.email,
+      roleType: this.roleType,
+      mobile: this.mobile
+    };
+
+    console.log(`HERE: ${JSON.stringify(payload)}`);
   }
 }
