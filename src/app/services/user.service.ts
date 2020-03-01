@@ -17,4 +17,13 @@ export class UserService {
   postUser(payload: PostUser): Observable<any> {
     return this.http.post<any>(`/api/user`, payload);
   }
+
+  updateUser(id: string, payload: PostUser): Observable<any> {
+    console.log(`ID: ${id}`);
+    return this.http.put<any>(`/api/user/${id}`, payload);
+  }
+
+  deleteUser(id: string): Observable<any> {
+    return this.http.delete(`/api/user/${id}`);
+  }
 }

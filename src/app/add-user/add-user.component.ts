@@ -53,4 +53,19 @@ export class AddUserComponent implements OnInit {
       }
     });
   }
+
+  updateUser() {
+    const payload: PostUser = {
+      name: this.name,
+      email: this.email,
+      roleType: this.roleType,
+      mobile: this.mobile
+    };
+
+    this.userService.updateUser(this.data.user._id, payload).subscribe(response => {
+      if (response.status === 'success') {
+        this.dialogRef.close();
+      }
+    });
+  }
 }
