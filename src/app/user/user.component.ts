@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from '../models/User';
 import { MatDialog } from '@angular/material/dialog';
 import { AddUserComponent } from '../add-user/add-user.component';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-user',
@@ -19,33 +20,16 @@ export class UserComponent implements OnInit {
   ];
   dataSource: User[];
 
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog, private userService: UserService) {}
 
   ngOnInit(): void {
     this.getUser();
   }
 
   getUser() {
-    const ELEMENT_DATA: User[] = [
-      {
-        _id: '123',
-        name: 'Rishabh',
-        email: 'rishabh@gmail.com',
-        roleType: 'Admin',
-        mobile: 9923251513,
-        status: true
-      },
-      {
-        _id: '345',
-        name: 'John Doe',
-        email: 'john@doe.com',
-        roleType: 'Customer Executive',
-        mobile: 9923251511,
-        status: false
-      }
-    ];
-
-    this.dataSource = ELEMENT_DATA;
+    this.userService.getUsers().subscribe(response => {
+      this.dataSource = response.body;
+    });
   }
 
   getName(name: string) {

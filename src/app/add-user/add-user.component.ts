@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { PostUser } from '../models/PostUser';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-add-user',
@@ -16,7 +17,8 @@ export class AddUserComponent implements OnInit {
 
   constructor(
     public dialogRef: MatDialogRef<AddUserComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
@@ -45,6 +47,10 @@ export class AddUserComponent implements OnInit {
       mobile: this.mobile
     };
 
-    console.log(`HERE: ${JSON.stringify(payload)}`);
+    this.userService.postUser(payload).subscribe(response => {
+      if (response.status === 'success') {
+        this.dialogRef.close();
+      }
+    });
   }
 }
