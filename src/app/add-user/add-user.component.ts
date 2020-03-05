@@ -66,10 +66,10 @@ export class AddUserComponent implements OnInit {
       }
     }
 
-    if (form.mobile && typeof form.mobile !== 'number') {
-      this.formValid = false;
-      this.formError.mobile = 'error';
-    }
+    // if (form.mobile && typeof form.mobile !== 'number') {
+    //   this.formValid = false;
+    //   this.formError.mobile = 'error';
+    // }
   }
 
   addUser() {
