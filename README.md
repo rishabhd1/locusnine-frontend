@@ -18,6 +18,7 @@ npm install -g @angular/cli
 Install Dependencies
 
 ```bash
+git clone https://github.com/rishabh-9000/locusnine-frontend.git
 cd locusnine-frontend
 npm install
 ```
